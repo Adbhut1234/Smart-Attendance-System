@@ -37,13 +37,13 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 0 1.25rem;
-  z-index: 40;
+  height: calc(64px + env(safe-area-inset-top, 0px));
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: env(safe-area-inset-top, 0px) 1.25rem 0;
+  z-index: 100; /* Higher z-index to ensure it stays on top */
   justify-content: space-between;
   align-items: center;
 }
@@ -92,7 +92,7 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 45;
+  z-index: 105; /* Above header to prevent interaction bleed */
   animation: fadeIn 0.3s ease;
 }
 
@@ -111,7 +111,9 @@
   }
 
   .mainContent {
-    padding-top: 64px;
+    padding-top: calc(64px + env(safe-area-inset-top, 0px) + 1.5rem);
     width: 100%;
+    /* Ensure content doesn't snap under navbar too early */
+    scroll-padding-top: calc(64px + env(safe-area-inset-top, 0px) + 2rem);
   }
 }
