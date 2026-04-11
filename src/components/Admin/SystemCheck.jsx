@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, ShieldCheck, ShieldAlert, Database, Github } from 'lucide-react';
+import { Activity, ShieldCheck, ShieldAlert, Database } from 'lucide-react';
 import { checkAppwriteHealth } from '../../services/appwrite';
 import styles from './SystemCheck.module.css';
 
