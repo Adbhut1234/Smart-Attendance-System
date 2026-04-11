@@ -23,7 +23,10 @@ const Scanner = () => {
   useEffect(() => {
     const loadModels = async () => {
       try {
-        const MODEL_URL = import.meta.env.BASE_URL + 'models';
+        const baseUrl = import.meta.env.BASE_URL || '/';
+        const MODEL_URL = baseUrl.endsWith('/') ? `${baseUrl}models` : `${baseUrl}/models`;
+        
+        console.log("Scanner: Loading models from:", MODEL_URL);
 
         setLoadingStage('Loading face detector...');
         await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);

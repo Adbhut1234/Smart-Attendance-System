@@ -21,17 +21,26 @@ const Register = () => {
   const [isModelsLoaded, setIsModelsLoaded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [modelsError, setModelsError] = useState(null);
 
   useEffect(() => {
     const loadModels = async () => {
       try {
-        const MODEL_URL = import.meta.env.BASE_URL + 'models';
+        setModelsError(null);
+        // Robust directory resolution for different environments
+        const baseUrl = import.meta.env.BASE_URL || '/';
+        const MODEL_URL = baseUrl.endsWith('/') ? `${baseUrl}models` : `${baseUrl}/models`;
+        
+        console.log("Loading models from:", MODEL_URL);
+        
         await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
         await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
         await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
+        
         setIsModelsLoaded(true);
       } catch (error) {
         console.error("Failed to load models for Register:", error);
+        setModelsError("Failed to fetch AI models. Check your internet or base path.");
       }
     };
     loadModels();
@@ -112,8 +121,18 @@ const Register = () => {
         {/* Mode Toggle Removed */}
 
         <div className={styles.cameraWrapper}>
-          {!isModelsLoaded && (
-             <div className={styles.modelsLoading}>Loading AI Models...</div>
+          {modelsError ? (
+            <div className={styles.modelsError}>
+              <p>{modelsError}</p>
+              <button onClick={() => window.location.reload()} className={styles.retryBtn}>
+                Retry Loading
+              </button>
+            </div>
+          ) : !isModelsLoaded && (
+             <div className={styles.modelsLoading}>
+               <div className={styles.pulseDot}></div>
+               Loading AI Models...
+             </div>
           )}
           
           {uploadMode ? (
