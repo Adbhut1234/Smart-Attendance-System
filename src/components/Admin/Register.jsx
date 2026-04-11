@@ -107,8 +107,9 @@ const Register = () => {
       }, 3000);
 
     } catch (error) {
-      console.error("Registration error:", error);
-      alert("Failed to enroll student to DB. Ensure Appwrite permissions and Schema are correct.");
+      console.error("Appwrite Registration Error:", error);
+      // Reveal the specific Appwrite error message for easier debugging
+      alert(`Enrollment Failed: ${error.message}\n\nPlease check your Appwrite collection permissions and ensure 'faceEmbedding' size is at least 4096.`);
       setIsProcessing(false);
     }
   };
