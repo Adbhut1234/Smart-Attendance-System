@@ -63,7 +63,8 @@ const Register = () => {
       return;
     }
 
-    if (!uploadMode && (!webcamRef.current || !webcamRef.current.video)) return;
+    // Initial validation passed
+    // webcamRef check removed as we are in uploadMode
 
     setIsProcessing(true);
     setIsSuccess(false);
@@ -81,9 +82,11 @@ const Register = () => {
         return;
       }
 
-      // Convert Float32Array to native JS Array to stringify securely 
-      const descriptorArray = Array.from(detections.descriptor);
+      // Convert Float32Array to native JS Array and optimize length by rounding to 4 decimals
+      const descriptorArray = Array.from(detections.descriptor).map(val => Number(val.toFixed(4)));
       const embeddingStr = JSON.stringify(descriptorArray);
+      
+      console.log("Biometric signature generated. String length:", embeddingStr.length);
 
       await registerStudent({
         name,
