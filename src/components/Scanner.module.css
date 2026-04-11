@@ -320,13 +320,28 @@
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 480px) {
   .kioskCard {
-    padding: 1.5rem;
-    gap: 1.25rem;
-    border-radius: 1.25rem;
+    width: 95%;
+    padding: 1.25rem;
+    gap: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  .videoWrapper {
+    border-width: 1px;
   }
 
   .backBtn {
     top: 1rem;
     left: 1rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .successTitle, .rejectedTitle {
+    font-size: 1.1rem;
+  }
+
+  .resultSubtext {
+    font-size: 0.75rem;
   }
 }

@@ -120,48 +120,54 @@ const StudentList = () => {
             <div className={styles.spinner}></div>
           </div>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Student ID</th>
-                <th>Full Name</th>
-                <th>Biometric Status</th>
-                <th>Internal DB Slot</th>
-                <th style={{ textAlign: 'right' }}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {students.length === 0 ? (
+          <div className={styles.tableResponsive}>
+            <table>
+              <thead>
                 <tr>
-                  <td colSpan="5">
-                    <div className={styles.emptyState}>No students enrolled in the database yet.</div>
-                  </td>
+                  <th>Student ID</th>
+                  <th>Full Name</th>
+                  <th>Biometric Status</th>
+                  <th>Internal DB Slot</th>
+                  <th style={{ textAlign: 'right' }}>Actions</th>
                 </tr>
-              ) : (
-                students.map((student) => (
-                  <tr key={student.$id} className={styles.row}>
-                    <td><strong>{student.studentId}</strong></td>
-                    <td>{student.name}</td>
-                    <td>
-                      <span className={styles.enrollmentBadge}>
-                        Descriptor Bound
-                      </span>
-                    </td>
-                    <td style={{ color: '#64748b', fontSize: '0.8rem' }}>{student.$id}</td>
-                    <td style={{ textAlign: 'right' }}>
-                      <button
-                        className={styles.deleteBtn}
-                        onClick={() => initiateDelete(student.$id, student.studentId, student.name)}
-                        title="Remove Student"
-                      >
-                        <Trash2 size={16} />
-                      </button>
+              </thead>
+              <tbody>
+                {students.length === 0 ? (
+                  <tr>
+                    <td colSpan="5">
+                      <div className={styles.emptyState}>No students enrolled in the database yet.</div>
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                ) : (
+                  students.map((student) => (
+                    <tr key={student.$id} className={styles.row}>
+                      <td data-label="Student ID">
+                        <strong>{student.studentId}</strong>
+                      </td>
+                      <td data-label="Full Name">{student.name}</td>
+                      <td data-label="Biometric Status">
+                        <span className={styles.enrollmentBadge}>
+                          Descriptor Bound
+                        </span>
+                      </td>
+                      <td data-label="Internal DB Slot" style={{ color: '#64748b', fontSize: '0.8rem' }}>
+                        {student.$id}
+                      </td>
+                      <td data-label="Actions" style={{ textAlign: 'right' }}>
+                        <button
+                          className={styles.deleteBtn}
+                          onClick={() => initiateDelete(student.$id, student.studentId, student.name)}
+                          title="Remove Student"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

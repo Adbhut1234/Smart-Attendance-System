@@ -239,3 +239,79 @@ td {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+@media (max-width: 768px) {
+  .tableContainer {
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+  }
+
+  .tableResponsive table, 
+  .tableResponsive thead, 
+  .tableResponsive tbody, 
+  .tableResponsive th, 
+  .tableResponsive td, 
+  .tableResponsive tr {
+    display: block;
+  }
+
+  .tableResponsive thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .row {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+  }
+
+  .row:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .tableResponsive td {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .tableResponsive td:last-child {
+    border-bottom: none;
+    padding-top: 1rem;
+  }
+
+  .tableResponsive td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 600;
+    color: #94a3b8;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .deleteBtn {
+    width: 100%;
+    justify-content: center;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+  }
+}

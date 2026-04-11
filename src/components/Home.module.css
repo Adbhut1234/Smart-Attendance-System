@@ -305,18 +305,38 @@
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 480px) {
   .topBar {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .brandMark span {
+    display: none;
   }
 
   .contentWrapper {
-    padding: 2rem 1.25rem 3rem;
+    padding: 1rem 1.25rem 3rem;
+  }
+
+  .mainTitle {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .mainSubtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
   }
 
   .heroCards {
     max-width: 100%;
+    gap: 0.75rem;
   }
 
   .heroCard {
-    padding: 1rem 1.25rem;
+    padding: 1.25rem;
+  }
+
+  .cardIconWrapper {
+    width: 48px;
+    height: 48px;
   }
 }
