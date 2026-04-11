@@ -1,0 +1,207 @@
+.container {
+  padding: 2.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.header { margin-bottom: 0.5rem; }
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ── Setting Card ───────────────────────────────────── */
+.settingCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cardIconWrapper {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 650;
+  color: white;
+  margin: 0 0 0.4rem;
+}
+
+.cardDesc {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.presentTag {
+  color: #34d399;
+  font-weight: 600;
+}
+
+.lateTag {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+/* ── Time Picker ────────────────────────────────────── */
+.timePickerRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.timeLabel {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.03em;
+  min-width: 90px;
+}
+
+.timeInput {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1.25rem;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  /* Style the time picker chrome */
+  color-scheme: dark;
+}
+
+.timeInput:focus {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ── Preview Box ────────────────────────────────────── */
+.previewBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+}
+
+.infoIcon {
+  color: #4b5563;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.previewBox p {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Save Button ────────────────────────────────────── */
+.saveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.75rem 1.5rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px -4px rgba(59, 130, 246, 0.4);
+}
+
+.saveBtn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px -4px rgba(59, 130, 246, 0.5);
+}
+
+.saveBtnSuccess {
+  background: #10b981 !important;
+  box-shadow: 0 4px 14px -4px rgba(16, 185, 129, 0.5) !important;
+}
+
+/* ── Info Card ──────────────────────────────────────── */
+.infoCard {
+  background: rgba(59, 130, 246, 0.04);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.infoTitle {
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: #60a5fa;
+  margin: 0 0 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.infoList {
+  margin: 0;
+  padding: 0 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.infoList li {
+  font-size: 0.82rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 1.5rem; }
+  .timePickerRow { flex-direction: column; align-items: flex-start; }
+}
