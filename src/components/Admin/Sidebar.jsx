@@ -1,17 +1,29 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, UserPlus, LogOut, ShieldCheck, Activity, Settings2, Terminal } from 'lucide-react';
+import { 
+  LayoutDashboard, Users, UserPlus, LogOut, ShieldCheck, 
+  Activity, Settings2, Terminal, X 
+} from 'lucide-react';
 import styles from './Sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     navigate('/');
+    if (onClose) onClose();
+  };
+
+  const handleNavLinkClick = () => {
+    if (onClose) onClose();
   };
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`}>
+      {/* Mobile Close Button */}
+      <button className={styles.closeBtn} onClick={onClose}>
+        <X size={20} />
+      </button>
 
       {/* Brand */}
       <div className={styles.brand}>
@@ -30,6 +42,7 @@ const Sidebar = () => {
         <NavLink
           to="/admin/dashboard"
           className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+          onClick={handleNavLinkClick}
         >
           <Activity className={styles.navIcon} />
           Live Dashboard
@@ -38,6 +51,7 @@ const Sidebar = () => {
         <NavLink
           to="/admin/students"
           className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+          onClick={handleNavLinkClick}
         >
           <Users className={styles.navIcon} />
           Student Register
@@ -46,6 +60,7 @@ const Sidebar = () => {
         <NavLink
           to="/admin/register"
           className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+          onClick={handleNavLinkClick}
         >
           <UserPlus className={styles.navIcon} />
           Enroll Student
@@ -54,6 +69,7 @@ const Sidebar = () => {
         <NavLink
           to="/admin/settings"
           className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+          onClick={handleNavLinkClick}
         >
           <Settings2 className={styles.navIcon} />
           Attendance Settings
@@ -62,6 +78,7 @@ const Sidebar = () => {
         <NavLink
           to="/admin/system-check"
           className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+          onClick={handleNavLinkClick}
         >
           <Terminal className={styles.navIcon} size={18} />
           System Check

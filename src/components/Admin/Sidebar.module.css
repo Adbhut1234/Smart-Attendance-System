@@ -10,6 +10,40 @@
   padding: 1.75rem 1rem;
   position: relative;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+  z-index: 50;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .closeBtn {
+    display: flex;
+    position: absolute;
+    top: 1.25rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+}
+
+.closeBtn {
+  display: none;
 }
 
 /* Subtle ambient left glow */
