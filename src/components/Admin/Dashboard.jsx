@@ -164,65 +164,65 @@ const Dashboard = () => {
             <div className={styles.spinner}></div>
           </div>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Student ID</th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Match Score</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {logs.length === 0 ? (
+            <table>
+              <thead>
                 <tr>
-                  <td colSpan="5">
-                    <div className={styles.emptyState}>
-                      <Clock size={32} strokeWidth={1} />
-                      <p>No scans recorded yet. The feed will update in real-time.</p>
-                    </div>
-                  </td>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Match Score</th>
+                  <th>Status</th>
                 </tr>
-              ) : (
-                logs.map((log, index) => {
-                  const isNew = newLogIds.has(log.$id);
-                  const d = new Date(log.timestamp);
-                  const status = getAttendanceStatus(log.timestamp);
-                  return (
-                    <tr
-                      key={log.$id || index}
-                      className={`${styles.row} ${isNew ? styles.rowNew : ''}`}
-                    >
-                      <td>
-                        <span className={styles.studentIdBadge}>{log.studentId}</span>
-                      </td>
-                      <td>
-                        <span className={styles.nameCell}>{log.name}</span>
-                      </td>
-                      <td className={styles.mutedCell}>
-                        {d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
-                      </td>
-                      <td className={styles.timeCell}>
-                        {d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      </td>
-                      <td>
-                        <span className={styles.confidenceBadge}>
-                          {Math.round(log.confidence * 100)}% Match
-                        </span>
-                      </td>
-                      <td>
-                        <span className={status === 'Late Entry' ? styles.lateBadge : styles.presentBadge}>
-                          {status}
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {logs.length === 0 ? (
+                  <tr>
+                    <td colSpan="6">
+                      <div className={styles.emptyState}>
+                        <Clock size={32} strokeWidth={1} />
+                        <p>No scans recorded yet. The feed will update in real-time.</p>
+                      </div>
+                    </td>
+                  </tr>
+                ) : (
+                  logs.map((log, index) => {
+                    const isNew = newLogIds.has(log.$id);
+                    const d = new Date(log.timestamp);
+                    const status = getAttendanceStatus(log.timestamp);
+                    return (
+                      <tr
+                        key={log.$id || index}
+                        className={`${styles.row} ${isNew ? styles.rowNew : ''}`}
+                      >
+                        <td data-label="Student ID">
+                          <span className={styles.studentIdBadge}>{log.studentId}</span>
+                        </td>
+                        <td data-label="Name">
+                          <span className={styles.nameCell}>{log.name}</span>
+                        </td>
+                        <td data-label="Date" className={styles.mutedCell}>
+                          {d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
+                        </td>
+                        <td data-label="Time" className={styles.timeCell}>
+                          {d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </td>
+                        <td data-label="Match Score">
+                          <span className={styles.confidenceBadge}>
+                            {Math.round(log.confidence * 100)}% Match
+                          </span>
+                        </td>
+                        <td data-label="Status">
+                          <span className={status === 'Late Entry' ? styles.lateBadge : styles.presentBadge}>
+                            {status}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
         )}
       </div>
     </div>

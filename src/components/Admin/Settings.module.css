@@ -202,6 +202,39 @@
 }
 
 @media (max-width: 600px) {
-  .container { padding: 1.5rem; }
-  .timePickerRow { flex-direction: column; align-items: flex-start; }
+  .container { 
+    padding: 1.25rem; 
+    gap: 1.25rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .settingCard {
+    padding: 1.25rem;
+  }
+
+  .timePickerRow { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 0.75rem;
+  }
+
+  .timeInput {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+  }
+
+  .saveBtn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .infoCard {
+    padding: 1.25rem;
+  }
 }

@@ -232,5 +232,37 @@
 @media (max-width: 1024px) {
   .content {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .configRow {
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .instructions {
+    padding: 1.5rem;
   }
 }
