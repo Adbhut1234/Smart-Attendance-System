@@ -92,8 +92,13 @@ const SystemCheck = () => {
         </div>
 
         <div className={styles.instructions}>
-          <h3>💡 Common Fixes</h3>
+          <h3>💡 Troubleshooting Guide</h3>
           <ul>
+            {(results?.students.error?.includes('fetch') || results?.logs.error?.includes('fetch')) && (
+              <li className={styles.corsAlert}>
+                <strong>🔴 CORS ISSUE DETECTED</strong>: "Failed to fetch" means your browser is blocking the request. Have you added <code>Adbhut1234.github.io</code> as a <strong>Web Platform</strong> in your Appwrite Project settings?
+              </li>
+            )}
             <li><strong>401 Unauthorized</strong>: Check if Collection Permissions allow "Any" role to "Create/Read".</li>
             <li><strong>404 Not Found</strong>: Verify the Database or Collection IDs in your .env match exactly.</li>
             <li><strong>Attribute Error</strong>: Ensure your Appwrite attributes are spelled exactly like the code.</li>
