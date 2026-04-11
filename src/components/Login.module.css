@@ -306,14 +306,15 @@
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 480px) {
   .loginContainer {
-    padding: 1rem;
-    align-items: flex-start;
-    padding-top: 15vh;
+    padding: 1.25rem;
+    align-items: center;
+    padding-top: 0;
   }
 
   .loginCard {
-    padding: 2.25rem 1.5rem;
+    padding: 2.5rem 1.5rem;
     max-width: 100%;
+    margin-top: 0;
   }
 
   .title {
@@ -326,7 +327,9 @@
   }
 
   .backBtn {
-    top: 1rem;
-    left: 1rem;
+    top: 1.25rem;
+    left: 1.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
   }
 }

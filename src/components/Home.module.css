@@ -308,12 +308,18 @@
     padding: 1rem 1.25rem;
   }
 
+  .adminBtn {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+
   .brandMark span {
     display: none;
   }
 
   .contentWrapper {
     padding: 1rem 1.25rem 3rem;
+    justify-content: space-between;
   }
 
   .mainTitle {
@@ -324,6 +330,12 @@
   .mainSubtitle {
     font-size: 0.95rem;
     margin-bottom: 2rem;
+  }
+
+  .madeBy {
+    text-align: center;
+    width: 100%;
+    margin-top: 1.5rem;
   }
 
   .heroCards {
