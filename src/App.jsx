@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Scanner from './components/Scanner';
 
 import AdminLayout from './components/Admin/AdminLayout';
@@ -10,7 +10,7 @@ import ViewLogs from './components/Student/ViewLogs';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         
@@ -27,7 +27,7 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin/*" element={<AdminLayout />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
