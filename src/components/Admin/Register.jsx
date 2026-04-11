@@ -88,6 +88,15 @@ const Register = () => {
       
       console.log("Biometric signature generated. String length:", embeddingStr.length);
 
+      // Log payload for manual schema verification in console
+      console.log("Sending payload to Appwrite:", {
+        name,
+        studentId,
+        username,
+        password,
+        faceEmbedding: `(String of length ${embeddingStr.length})`
+      });
+
       await registerStudent({
         name,
         studentId,
@@ -110,9 +119,9 @@ const Register = () => {
       }, 3000);
 
     } catch (error) {
-      console.error("Appwrite Registration Error:", error);
-      // Reveal the specific Appwrite error message for easier debugging
-      alert(`Enrollment Failed: ${error.message}\n\nPlease check your Appwrite collection permissions and ensure 'faceEmbedding' size is at least 4096.`);
+      console.error("DEBUG: Appwrite Registration Error:", error);
+      // Reveal ONLY the specific Appwrite error for cleaner diagnostics
+      alert(`ENROLLMENT FAILED\n\nAppwrite Error: ${error.message}\n\nCheck F12 Developer Tools for more details.`);
       setIsProcessing(false);
     }
   };

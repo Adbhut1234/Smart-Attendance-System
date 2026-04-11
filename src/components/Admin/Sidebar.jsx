@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, UserPlus, LogOut, ShieldCheck, Activity, Settings2 } from 'lucide-react';
+import { LayoutDashboard, Users, UserPlus, LogOut, ShieldCheck, Activity, Settings2, Terminal } from 'lucide-react';
 import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
@@ -57,6 +57,14 @@ const Sidebar = () => {
         >
           <Settings2 className={styles.navIcon} />
           Attendance Settings
+        </NavLink>
+
+        <NavLink
+          to="/admin/system-check"
+          className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+        >
+          <Terminal className={styles.navIcon} size={18} />
+          System Check
         </NavLink>
       </nav>
 

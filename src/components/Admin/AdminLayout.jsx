@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import StudentList from './StudentList';
 import Register from './Register';
 import Settings from './Settings';
+import SystemCheck from './SystemCheck';
 import styles from './AdminLayout.module.css';
 
 const AdminLayout = () => {
@@ -20,6 +21,7 @@ const AdminLayout = () => {
             <Route path="students" element={<StudentList />} />
             <Route path="register" element={<Register />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="system-check" element={<SystemCheck />} />
             
             <Route path="" element={<Navigate to="dashboard" replace />} />
           </Routes>

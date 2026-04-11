@@ -326,4 +326,33 @@ export async function authenticateStudent(username, password) {
     }
 }
 
+/**
+ * Diagnostic tool to check connection health to Appwrite
+ */
+export async function checkAppwriteHealth() {
+    const results = {
+        students: { status: 'checking', error: null },
+        logs: { status: 'checking', error: null },
+        config: { ...appwriteConfig }
+    };
+
+    try {
+        await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.studentsCollectionId, [Query.limit(1)]);
+        results.students.status = 'connected';
+    } catch (err) {
+        results.students.status = 'failed';
+        results.students.error = err.message;
+    }
+
+    try {
+        await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.attendanceLogsCollectionId, [Query.limit(1)]);
+        results.logs.status = 'connected';
+    } catch (err) {
+        results.logs.status = 'failed';
+        results.logs.error = err.message;
+    }
+
+    return results;
+}
+
 export default client;
