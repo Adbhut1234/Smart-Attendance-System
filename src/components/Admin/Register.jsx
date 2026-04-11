@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
-import Webcam from 'react-webcam';
+// import Webcam from 'react-webcam'; // Removed as per request
 import * as faceapi from 'face-api.js';
 import { CheckCircle2, UploadCloud } from 'lucide-react';
 import { registerStudent } from '../../services/appwrite';
 import styles from './Register.module.css';
 
 const Register = () => {
-  const webcamRef = useRef(null);
+  // const webcamRef = useRef(null); // Removed
   const hiddenImageRef = useRef(null);
   const fileInputRef = useRef(null);
   
@@ -15,7 +15,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
-  const [uploadMode, setUploadMode] = useState(false);
+  const [uploadMode, setUploadMode] = useState(true); // Defaulted to true
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [isModelsLoaded, setIsModelsLoaded] = useState(false);
@@ -25,7 +25,7 @@ const Register = () => {
   useEffect(() => {
     const loadModels = async () => {
       try {
-        const MODEL_URL = '/models';
+        const MODEL_URL = import.meta.env.BASE_URL + 'models';
         await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
         await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
         await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
@@ -60,7 +60,7 @@ const Register = () => {
     setIsSuccess(false);
 
     try {
-      const sourceElement = uploadMode ? hiddenImageRef.current : webcamRef.current.video;
+      const sourceElement = hiddenImageRef.current;
       
       const detections = await faceapi.detectSingleFace(sourceElement, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
@@ -109,22 +109,7 @@ const Register = () => {
       <div className={styles.registerCard}>
         <h2 className={styles.cardHeader}>Register Master Identity</h2>
 
-        <div className={styles.modeToggle}>
-          <button 
-            type="button"
-            className={`${styles.toggleBtn} ${!uploadMode ? styles.active : ''}`}
-            onClick={() => setUploadMode(false)}
-          >
-            Live Webcam
-          </button>
-          <button 
-            type="button"
-            className={`${styles.toggleBtn} ${uploadMode ? styles.active : ''}`}
-            onClick={() => setUploadMode(true)}
-          >
-            Upload Image
-          </button>
-        </div>
+        {/* Mode Toggle Removed */}
 
         <div className={styles.cameraWrapper}>
           {!isModelsLoaded && (
@@ -142,7 +127,6 @@ const Register = () => {
                   src={selectedImage} 
                   alt="Preview" 
                   className={styles.previewImage} 
-                  crossOrigin="anonymous"
                 />
               ) : (
                 <>
@@ -159,15 +143,9 @@ const Register = () => {
               />
             </div>
           ) : (
-            <Webcam
-              ref={webcamRef}
-              audio={false}
-              className={styles.webcam}
-              videoConstraints={{
-                aspectRatio: 1, 
-                facingMode: 'user'
-              }}
-            />
+            <div className={styles.webcamDisabled}>
+              Camera registration disabled. Use Image Upload.
+            </div>
           )}
         </div>
 
