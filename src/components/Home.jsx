@@ -77,7 +77,7 @@ const Home = () => {
             rel="noopener noreferrer"
             className={styles.madeByAccent}
           >
-            Adbhut Pandey & Rishab Kumar
+            Adbhut Pandey
           </a>
         </p>
 
