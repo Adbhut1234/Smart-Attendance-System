@@ -80,4 +80,4 @@ The system utilizes advanced computer vision to ensure high accuracy and securit
 This project is for educational purposes at SRMU.
 
 ---
-*Developed with ❤️ by Adi Pandey*
+*Developed with ❤️ by Adbhut Pandey*
